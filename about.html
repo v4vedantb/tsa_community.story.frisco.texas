@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta charset="UTF-8">
+
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Responsive viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <title>About, Frisco</title>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       NAVIGATION BAR (SUB-HEADER)
+       ======================================================= -->
+  <section class="sub-header">
+    <nav>
+      <!-- Theme toggle button (light/dark mode) -->
+      <button id="theme-toggle" aria-label="Toggle light/dark mode"></button>
+
+      <!-- Logo linking to home -->
+      <a href="index.html">
+        <img src="assets/logo.png" class="logo" alt="City Logo Of Frisco">
+      </a>
+
+      <!-- Navigation links (desktop + mobile) -->
+      <div class="nav-links" id="navLinks">
+        <div class="cross-icon" onclick="hideMenu()"></div>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="highlights.html">Highlights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="citations.html">References</a></li>
+        </ul>
+      </div>
+
+      <!-- Hamburger icon (mobile) -->
+      <div class="menu-icon-unicode" onclick="showMenu()">&#9776;</div>
+    </nav>
+
+    <!-- Slider wrapper for hero banner -->
+    <div class="slider-wrapper">
+      <!-- Hero text content -->
+      <div class="slider-text">
+        <h1>Discover Frisco</h1>
+        <p>A thriving North Texas community built on vision, growth, and quality of life.</p>
+        <a href="blogs.html" class="btn1">Read The Blogs</a>
+      </div>
+
+      <!-- Image slider -->
+      <div class="slider" id="slider">
+        <div class="slide"><img src="assets/banner_1.jpg" alt="Frisco-City"></div>
+        <div class="slide"><img src="assets/banner_2.jpg" alt="Frisco-City"></div>
+        <div class="slide"><img src="assets/banner_3.png" alt="Frisco-City"></div>
+      </div>
+
+      <!-- Slider navigation dots -->
+      <div class="slider-nav">
+        <span onclick="goToSlide(0)" class="dot"></span>
+        <span onclick="goToSlide(1)" class="dot"></span>
+        <span onclick="goToSlide(2)" class="dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       IMAGE GALLERY BANNER
+       ======================================================= -->
+  <div class="banner">
+    <div class="slider-imgs" style="--quantity: 10">
+      <div class="item" style="--position:1"><img src="assets/frisco1.jpg" alt="City-Overall"></div>
+      <div class="item" style="--position:2"><img src="assets/frisco2.png" alt="City-Overall"></div>
+      <div class="item" style="--position:3"><img src="assets/frisco3.png" alt="City-Overall"></div>
+      <div class="item" style="--position:4"><img src="assets/frisco4.png" alt="City-Overall"></div>
+      <div class="item" style="--position:5"><img src="assets/frisco5.png" alt="City-Overall"></div>
+      <div class="item" style="--position:6"><img src="assets/frisco6.png" alt="City-Overall"></div>
+      <div class="item" style="--position:7"><img src="assets/frisco7.png" alt="City-Overall"></div>
+      <div class="item" style="--position:8"><img src="assets/frisco8.png" alt="City-Overall"></div>
+      <div class="item" style="--position:9"><img src="assets/frisco9.png" alt="City-Overall"></div>
+      <div class="item" style="--position:10"><img src="assets/frisco10.png" alt="City-Overall"></div>
+    </div>
+    <div class="content">
+      <h1 data-content="THE MAYOR">THE MAYOR</h1>
+      <div class="model"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       FOOTER
+       ======================================================= -->
+  <section class="footer">
+    <footer>
+      <!-- Footer logo -->
+      <div class="logo">
+        <img src="assets/logo.png" alt="Frisco-City-Logo">
+      </div>
+      <!-- Contact info -->
+      <h4>Contact Us</h4>
+      <div class="text-container">
+        <p>George A. Purefoy Municipal Center</p>
+        <p>6101 Frisco Square Boulevard</p>
+        <p>Frisco, Texas 75034</p>
+        <p>Phone: 972-292-5000</p>
+      </div>
+      <!-- Departments list -->
+<h4 class="departments">Departments</h4>
+<div class="text-container2 footer-dept-links">
+  <p><a href="https://www.friscotexas.gov/506/City-Manager" target="_blank">City Manager’s Office</a></p>
+  <p><a href="https://www.friscoedc.com" target="_blank">Economic Development</a></p>
+  <p><a href="https://www.friscotexas.gov/154/Fire" target="_blank">Frisco Fire</a></p>
+  <p><a href="https://www.friscotexas.gov/100/Police" target="_blank">Frisco Police</a></p>
+  <p><a href="https://www.friscotexas.gov/167/Municipal-Court" target="_blank">Municipal Court</a></p>
+  <p><a href="https://www.playfrisco.org" target="_blank">Play Frisco</a></p>
+  <p><a href="https://www.visitfrisco.com" target="_blank">Visit Frisco</a></p>
+</div>
+
+      <!-- Social media links -->
+      <div class="footer-column follow-column">
+        <h4 class="follow">Follow Us</h4>
+        <div class="text-container3">
+          <a href="https://www.facebook.com/CityOfFriscoTX" class="fa fa-facebook"></a>
+          <a href="https://www.instagram.com/cityoffriscotx/" class="fa fa-instagram"></a>
+          <a href="https://www.youtube.com/user/cityoffriscotx" class="fa fa-youtube"></a>
+          <a href="https://www.linkedin.com/company/city-of-frisco/" class="fa fa-linkedin"></a>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+  <!-- =========================================================
+       JAVASCRIPT: MOBILE NAVIGATION
+       ======================================================= -->
+  <script>
+    // Open mobile navigation
+    function showMenu() {
+      document.getElementById("navLinks").style.right = "0";
+    }
+
+    // Close mobile navigation
+    function hideMenu() {
+      document.getElementById("navLinks").style.right = "-220px";
+    }
+  </script>
+
+  <!-- =========================================================
+       JAVASCRIPT: SLIDER + THEME TOGGLE
+       ======================================================= -->
+  <script>
+    let index = 0;
+    const slider = document.getElementById("slider");
+    const dots = document.querySelectorAll(".dot");
+    const totalSlides = 3;
+
+    // Update active dot indicator
+    function updateDots() {
+      dots.forEach((d) => d.classList.remove("active"));
+      dots[index].classList.add("active");
+    }
+
+    // Go to a specific slide
+    function goToSlide(i) {
+      index = i;
+      slider.style.transform = `translateX(-${index * 100}vw)`;
+      updateDots();
+    }
+
+    // Auto-advance slides
+    function autoSlide() {
+      index = (index + 1) % totalSlides;
+      goToSlide(index);
+    }
+
+    // Start auto-sliding every 4 seconds
+    setInterval(autoSlide, 4000);
+    updateDots();
+
+const toggleBtn = document.getElementById('theme-toggle');
+const root = document.documentElement;
+
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme === 'light') {
+  root.classList.add('light-theme');
+  toggleBtn.textContent = 'Toggle Dark Mode On';
+} else {
+  // force dark as default and normalize stored value
+  localStorage.setItem('theme', 'dark');
+  root.classList.remove('light-theme');
+  toggleBtn.textContent = 'Toggle Light Mode On';
+}
+
+toggleBtn.addEventListener('click', () => {
+  const isLight = root.classList.toggle('light-theme');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  toggleBtn.textContent = isLight ? 'Toggle Dark Mode On' : 'Toggle Light Mode On';
+});
+
+  </script>
+
+</body>
+</html>

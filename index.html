@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <meta charset="UTF-8">
+
+  <!-- Font Awesome icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  >
+
+  <!-- Main site stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  >
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frisco, Texas</title>
+</head>
+<body>
+
+  <!-- =========================================================
+       HERO HEADER WITH BACKGROUND VIDEO
+       ======================================================= -->
+  <section class="header">
+
+    <!-- Decorative background video (muted, looping) -->
+    <video
+      id="bg-video"
+      autoplay
+      muted
+      loop
+      aria-label="Background footage of Frisco city landmarks used for decoration behind the heading."
+    >
+      <source src="assets/vid1.mp4" type="video/mp4">
+    </video>
+
+    <!-- =====================================================
+         MAIN NAVIGATION BAR
+         =================================================== -->
+    <nav>
+
+      <!-- Theme toggle button (light / dark mode) -->
+      <button id="theme-toggle" aria-label="Toggle light/dark mode"></button>
+
+      <!-- Site logo linking back to home -->
+      <a href="index.html">
+        <img src="assets/logo.png" class="logo" alt="City logo of Frisco">
+      </a>
+
+      <!-- Desktop & mobile navigation links -->
+      <div class="nav-links" id="navLinks">
+        <!-- Close icon (shown in mobile nav) -->
+        <div class="cross-icon" onclick="hideMenu()"></div>
+
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="highlights.html">Highlights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="citations.html">References</a></li>
+        </ul>
+      </div>
+
+      <!-- Hamburger icon (mobile menu trigger) -->
+      <div class="menu-icon-unicode" onclick="showMenu()">&#9776;</div>
+    </nav>
+
+    <!-- Hero text content over video -->
+    <div class="text-box">
+      <h1>Frisco, Texas</h1>
+      <p>
+        Stay informed with community stories, city announcements, and upcoming events around Frisco.<br>
+        Local News, Events & City updates for Residents.
+      </p>
+      <a href="resources.html" class="hero-btn">Resources</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       NEWS AND INFORMATION SECTION
+       ======================================================= -->
+  <section class="newsinfo">
+    <h1 class="news">News & Information</h1>
+
+    <div class="row">
+      <!-- News item 1 -->
+      <div class="news-col">
+        <h3>City of Frisco Holiday Hours: Thanksgiving 2025</h3>
+        <p>
+          (November 20, 2025) In observance of the Thanksgiving holiday, the City of Frisco
+          administrative offices will be closed on Thursday, November 27, and Friday, November 28
+        </p>
+      </div>
+
+      <!-- News item 2 -->
+      <div class="news-col">
+        <h3>Frisco Square Blvd. closed east of Simpson Plaza Tuesday afternoon, Nov. 25</h3>
+        <p>
+          (November 24, 2025) A short section of Frisco Square Blvd. will be closed east of Simpson
+          Plaza Tuesday afternoon, November 25, for a special event.
+        </p>
+      </div>
+
+      <!-- News item 3 -->
+      <div class="news-col">
+        <h3>CodeRED Emergency Alert Platform Decommissioned; Residents Advised to Change Passwor</h3>
+        <p>
+          (November 24, 2025) The City of Frisco has learned CodeRED, the third-party platform used
+          for emergency alerts, was impacted by a cybersecurity incident.
+        </p>
+      </div>
+    </div>
+
+    <!-- Button linking to the full news/blogs page -->
+    <div class="articles">
+      <a href="blogs.html" class="btn">View The News Articles</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       TOUR OF FRISCO SECTION
+       ======================================================= -->
+  <section class="tour">
+    <h1>Tour of Frisco</h1>
+    <p>Below are some of the truly remarkable events</p>
+
+    <div class="row">
+
+      <!-- Event card: Fire Department -->
+      <div class="event-col">
+        <img src="assets/fire.png" alt="Fire-Department">
+        <div class="layer">
+          <h3>Fire Dept.</h3>
+        </div>
+        <p>
+          Frisco Fire Station 2 reopened after extensive renovations, now featuring a new kitchen,
+          sleeping quarters, and other amazing things.
+        </p>
+      </div>
+
+      <!-- Event card: Community Parade -->
+      <div class="event-col" id="second">
+        <img src="assets/spirit.png" alt="Park-Parade-Spirit">
+        <div class="layer">
+          <h3>Community Parade</h3>
+        </div>
+        <p>
+          Frisco residents showed their community spirit during the Community Parade at Kaleidoscope
+          Park. Parade showed spirit of the residents!
+        </p>
+      </div>
+
+      <!-- Event card: Town Hall Meeting -->
+      <div class="event-col">
+        <img src="assets/meeting.png" alt="Town-Hall-Meeting">
+        <div class="layer">
+          <h3>Town Hall Meeting</h3>
+        </div>
+        <p>
+          October 15 Town Hall meeting replays for updates on the Rail District and Frisco Animal
+          Facility plans in the Town Hall.
+        </p>
+      </div>
+    </div>
+
+    <!-- Button linking to highlights page -->
+    <a href="highlights.html" class="btn1">Highlights</a>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+       ======================================================= -->
+  <section class="footer">
+    <footer>
+
+      <!-- Footer logo -->
+      <div class="logo">
+        <img src="assets/logo.png" alt="Frisco-City-Logo">
+      </div>
+
+      <!-- Contact details -->
+      <h4>Contact Us</h4>
+      <div class="text-container">
+        <p>George A. Purefoy Municipal Center</p>
+        <p>6101 Frisco Square Boulevard</p>
+        <p>Frisco, Texas 75034</p>
+        <p>Phone: 972-292-5000</p>
+      </div>
+
+<h4 class="departments">Departments</h4>
+<div class="text-container2 footer-dept-links">
+  <p><a href="https://www.friscotexas.gov/506/City-Manager" target="_blank">City Manager’s Office</a></p>
+  <p><a href="https://www.friscoedc.com" target="_blank">Economic Development</a></p>
+  <p><a href="https://www.friscotexas.gov/154/Fire" target="_blank">Frisco Fire</a></p>
+  <p><a href="https://www.friscotexas.gov/100/Police" target="_blank">Frisco Police</a></p>
+  <p><a href="https://www.friscotexas.gov/167/Municipal-Court" target="_blank">Municipal Court</a></p>
+  <p><a href="https://www.playfrisco.org" target="_blank">Play Frisco</a></p>
+  <p><a href="https://www.visitfrisco.com" target="_blank">Visit Frisco</a></p>
+</div>
+
+
+      <!-- Social media links -->
+      <div class="footer-column follow-column">
+        <h4 class="follow">Follow Us</h4>
+        <div class="text-container3">
+          <a href="https://www.facebook.com/CityOfFriscoTX" class="fa fa-facebook"></a>
+          <a href="https://www.instagram.com/cityoffriscotx/" class="fa fa-instagram"></a>
+          <a href="https://www.youtube.com/user/cityoffriscotx" class="fa fa-youtube"></a>
+          <a href="https://www.linkedin.com/company/city-of-frisco/" class="fa fa-linkedin"></a>
+        </div>
+      </div>
+
+    </footer>
+  </section>
+
+  <!-- =======================================================
+       JAVASCRIPT: MOBILE NAVIGATION + THEME TOGGLE
+       ===================================================== -->
+  <script>
+    // Open the slide-in mobile navigation
+    function showMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.style.right = '0';
+    }
+
+    // Close the slide-in mobile navigation
+    function hideMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.style.right = '-200px';
+    }
+
+    // Theme toggle logic (light / dark)
+    const toggleBtn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'light') {
+        root.classList.add('light-theme');
+        toggleBtn.textContent = 'Toggle Dark Mode On';
+    } else {
+  // force dark as default and normalize stored value
+        localStorage.setItem('theme', 'dark');
+        root.classList.remove('light-theme');
+        toggleBtn.textContent = 'Toggle Light Mode On';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+    const isLight = root.classList.toggle('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    toggleBtn.textContent = isLight ? 'Toggle Dark Mode On' : 'Toggle Light Mode On';
+    });
+  </script>
+
+</body>
+</html>

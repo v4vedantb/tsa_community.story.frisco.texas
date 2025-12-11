@@ -1,0 +1,2420 @@
+/* =========================================================
+   FONT IMPORTS
+   ======================================================= */
+@import url("https://fonts.cdnfonts.com/css/ica-rubrik-black");
+@import url("https://fonts.cdnfonts.com/css/poppins");
+
+/* =========================================================
+   THEME VARIABLES
+   ---------------------------------------------------------
+   Dark theme is default. Light theme overrides are applied
+   by adding the "light-theme" class to the <html> element.
+   ======================================================= */
+
+:root {
+  /* Backgrounds */
+  --bg-main: #343434;
+  --bg-section: #343434;
+  --bg-header: #222;
+  --bg-card: #222;
+  --bg-overlay: rgba(0, 0, 0, 0.85);
+
+  /* Text colors */
+  --text-main: #f5f7ff;
+  --text-muted: #b5b8c7;
+  --text-soft: #cfd2e0;
+  --text-overlay: #ffffff;
+
+  /* Accent colors */
+  --accent-primary: #f44336;
+  --accent-primary-soft: rgba(244, 67, 54, 0.35);
+  --accent-primary-subtle: rgba(244, 67, 54, 0.18);
+  --accent-hover: #e0e0e0;
+  --accent-hover-soft: rgba(224, 224, 224, 0.6);
+
+  /* Borders */
+  --border-light: #f5f7ff;
+  --border-soft: #2a2f3a;
+}
+
+/* Light mode overrides */
+html.light-theme {
+  --bg-main: #e8e8e8;
+  --bg-section: #f2f2f2;
+  --bg-header: #d8d8d8;
+  --bg-card: #ffffff;
+  --bg-overlay: rgba(99, 98, 98, 0.7);
+
+  --text-main: #06102a;
+  --text-muted: #4a5474;
+  --text-soft: #6b7495;
+  --text-overlay: #06102a;
+
+  --accent-primary: #f44336;
+  --accent-navy: #1b2b5a;
+  --accent-gray: #7b8294;
+
+  --border-light: #1b2b5a;
+  --border-soft: #c3c7dd;
+}
+
+/* =========================================================
+   GLOBAL RESET & BASICS
+   ======================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
+body {
+  position: relative;
+  overflow-y: auto;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* Base paragraph size (kept at 14px for mobile & small screens) */
+p {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  padding: 10px;
+  display: block;
+}
+
+/* On larger displays, bump paragraph size slightly */
+@media (min-width: 1024px) {
+  p {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-main);
+}
+
+h1 {
+  text-decoration: underline 5px var(--accent-primary);
+}
+
+h3 {
+  text-align: center;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+/* =========================================================
+   ICONS (MENU & CLOSE)
+   ======================================================= */
+
+.menu-icon-unicode {
+  display: inline-block;
+  font-size: 22px;
+  color: var(--text-main);
+  cursor: pointer;
+  margin: 10px;
+}
+
+.cross-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.cross-icon::before,
+.cross-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 3px;
+  background: var(--text-main);
+  transform-origin: center;
+}
+
+.cross-icon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cross-icon::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Hide hamburger / close icons on desktop */
+@media (min-width: 701px) {
+  .cross-icon,
+  .menu-icon-unicode {
+    display: none !important;
+  }
+}
+
+/* =========================================================
+   HEADER & BACKGROUND VIDEO
+   ======================================================= */
+
+.header {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-header);
+  padding-top: 60px; /* space for fixed nav */
+}
+
+#bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+  box-sizing: border-box;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 2px;
+}
+
+/* Dark overlay over background */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 1;
+}
+
+/* =========================================================
+   NAVIGATION (FIXED TOP BAR)
+   ======================================================= */
+
+nav {
+  display: flex;
+  padding: 2% 3%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-header);
+  height: 60px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+}
+
+nav img.logo,
+nav img {
+  width: 80px;
+  height: 40px;
+}
+
+.nav-links {
+  flex: 1;
+  text-align: right;
+}
+
+.nav-links ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 8px 12px;
+}
+
+/* Disabled legacy underline container */
+.nav-links ul li::after {
+  display: none;
+}
+
+.nav-links ul li a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 13px;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+/* Underline hover effect */
+.nav-links ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent-primary);
+  transition: width 0.4s ease;
+}
+
+.nav-links ul li a:hover::after {
+  width: 100%;
+}
+
+/* =========================================================
+   FIXED THEME TOGGLE (BOTTOM RIGHT)
+   ======================================================= */
+
+#theme-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1100;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+html.light-theme #theme-toggle {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-main);
+  border-color: var(--border-soft);
+}
+
+#theme-toggle:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-color: var(--accent-primary);
+}
+
+html.light-theme #theme-toggle:hover {
+  background: #c2c2c2;
+}
+
+/* =========================================================
+   HERO TEXT & BUTTONS
+   ======================================================= */
+
+.text-box {
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  color: var(--text-main);
+}
+
+.text-box h1 {
+  font-size: 62px;
+  color: var(--text-main);
+}
+
+.text-box p {
+  margin: 10px 0 40px;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+/* Main hero button */
+.hero-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 12px 34px;
+  font-size: 13px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.hero-btn:hover {
+  border: 1px solid var(--accent-primary);
+  background: var(--accent-primary);
+  transition: 0.5s;
+}
+
+/* =========================================================
+   GENERIC SECTION BUTTONS
+   ======================================================= */
+
+.btn {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+  border-radius: 50px;
+  padding: 12px 34px;
+  font-size: 13px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  border: 1px solid var(--accent-primary);
+  background: var(--accent-primary);
+  color: #ffffff;
+  transition: 0.5s;
+}
+
+/* Footer main button */
+.btn1 {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 3px solid var(--border-light);
+  padding: 12px 34px;
+  font-size: 13px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.btn1:hover {
+  border: 1px solid var(--accent-primary);
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    #fd8a75,
+    var(--accent-primary)
+  );
+  transition: 0.5s;
+}
+
+/* Button color variants (light / dark) */
+html:not(.light-theme) .btn1 {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 3px solid var(--border-light);
+}
+
+html.light-theme .btn1 {
+  background-color: #ffffff;
+  color: #06102a;
+  border: 2px solid #ffffff;
+}
+
+/* Normalize font size on all main buttons */
+.hero-btn,
+.btn,
+.btn1 {
+  font-size: 14px;
+}
+
+/* =========================================================
+   GENERIC FLEX ROWS
+   ======================================================= */
+
+.row,
+.events-row,
+.event-container {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   NEWS SECTION
+   ======================================================= */
+
+.newsinfo {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 80px 20px;
+  text-align: left;
+  position: relative;
+  background-color: var(--bg-section);
+}
+
+html:not(.light-theme) .newsinfo {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.9)
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+html.light-theme .newsinfo {
+  background-image: linear-gradient(
+    rgba(232, 232, 232, 1),
+    rgba(242, 242, 242, 1)
+  );
+}
+
+.news {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: underline 5px var(--accent-primary);
+  text-align: center;
+}
+
+.news-col {
+  width: 100%;
+  max-width: 1070px;
+  min-height: 150px;
+  background: var(--bg-card);
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+.news-col:hover {
+  box-shadow: 0 0 20px rgba(224, 224, 224, 0.4);
+}
+
+html.light-theme .news-col:hover {
+  box-shadow: 0 0 20px var(--accent-primary);
+}
+
+.news-col p {
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   TOUR SECTION (HOME PAGE HIGHLIGHTS)
+   ======================================================= */
+
+.tour {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2)),
+    url("assets/frisco.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  border-radius: 0;
+  overflow: hidden;
+  color: var(--text-main);
+}
+
+/* Dark overlay over tour section */
+.tour::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.tour > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Title area above the cards */
+.tour .section-title {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.tour .section-title h1 {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-decoration: underline 5px var(--accent-primary);
+}
+
+.tour .section-title p {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* Fallback for direct children */
+.tour > h1,
+.tour > h2,
+.tour > h3,
+.tour > p {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* Tour cards */
+.event-col {
+  flex-basis: 32%;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-col img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Hover overlay on tour images */
+.layer {
+  background: transparent;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.event-col:hover .layer {
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-primary-subtle)
+  );
+}
+
+.layer h3 {
+  width: 100%;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 26px;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.event-col:hover .layer h3 {
+  bottom: 49%;
+  opacity: 1;
+  border-radius: 20px;
+}
+
+/* Caption strip under tour images */
+.event-col p {
+  padding: 12px 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+  background-color: #222;
+  margin: 0;
+}
+
+html.light-theme .event-col p {
+  background-color: #ffffff;
+  color: #06102a;
+}
+
+/* =========================================================
+   FOOTER (BASE)
+   ======================================================= */
+
+footer,
+footer * {
+  overflow: hidden;
+}
+
+#end-of-footer {
+  height: 1px;
+  overflow: auto;
+}
+
+footer {
+  background: var(--bg-header);
+  width: 100%;
+  height: 370px;
+  padding: 0;
+  text-align: left;
+}
+
+footer img {
+  margin: 30px;
+  width: 300px;
+  height: 150px;
+  position: relative;
+  top: 38px;
+}
+
+h4 {
+  color: var(--text-main);
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  top: -190px;
+  left: 73vh;
+  text-decoration: underline 4px var(--accent-primary);
+}
+
+.text-container,
+.text-container2 {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  padding: 10px;
+  display: block;
+  position: relative;
+  width: 300px;
+}
+
+.text-container {
+  top: -210px;
+  left: 70vh;
+}
+
+.text-container2 {
+  top: -475px;
+  left: 140vh;
+}
+
+/* Footer department links styling */
+.footer-dept-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 300;
+  transition: 0.3s;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+/* Hover underline effect in gray */
+.footer-dept-links a:hover {
+  color: var(--text-main);
+  border-bottom: 2px solid #9e9e9e; /* light gray underline */
+}
+
+/* Light theme override */
+html.light-theme .footer-dept-links a {
+  color: #4a5474;
+}
+
+html.light-theme .footer-dept-links a:hover {
+  color: #06102a;
+  border-bottom: 2px solid #7b8294; /* gray-ish underline for light mode */
+}
+
+
+.departments {
+  position: relative;
+  top: -450px;
+  left: 143vh;
+}
+
+/* =========================================================
+   SLIDER / HERO BANNER (HOME)
+   ======================================================= */
+
+.slider-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 91vh;
+  overflow: hidden;
+}
+
+/* Overlay over slides for contrast */
+.slider-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 2;
+}
+
+.slider {
+  width: 300%;
+  height: 100%;
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.slide {
+  width: 100vw;
+  height: 91vh;
+  flex-shrink: 0;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  color: var(--text-main);
+}
+
+.slider-text h1 {
+  font-size: 3.5rem;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.slider-text p {
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.slider-nav {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 4;
+}
+
+/* Slider dots */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dot.active {
+  opacity: 1;
+}
+
+/* =========================================================
+   BLOGS (BLOG LISTING PAGE)
+   ======================================================= */
+
+.blog-content {
+  position: relative;
+  width: 100%;
+}
+
+/* Banner image above blogs */
+.banner4 {
+  position: relative;
+  margin-top: 0;
+  height: 400px;
+  overflow: hidden;
+}
+
+.banner4 img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(70%);
+}
+
+.banner4::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 4;
+}
+
+/* Shared centered banner text block */
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  text-align: center;
+  color: var(--text-main);
+}
+
+.banner-text h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.banner-text p {
+  font-size: 18px;
+  color: var(--text-main);
+}
+
+/* Main blogs section */
+.blogs-section {
+  width: 100%;
+  padding: 80px 0;
+  text-align: center;
+  filter: brightness(90%);
+  position: relative;
+  z-index: 1;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.04), transparent 55%),
+    radial-gradient(circle at bottom, rgba(0, 0, 0, 0.6), transparent 55%),
+    linear-gradient(160deg, #141414, #262626);
+}
+
+html.light-theme .blogs-section {
+  background: linear-gradient(
+    rgba(232, 232, 232, 0.95),
+    rgba(242, 242, 242, 1)
+  );
+  filter: none;
+}
+
+.blogs-section h1,
+.blogs-section p {
+  color: var(--text-main);
+}
+
+.blogs-section h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.blogs-section p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  width: 70%;
+  max-width: 650px;
+  margin: 0 auto 40px auto;
+  opacity: 0.9;
+}
+
+/* Blog cards row */
+.blog-row {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  z-index: 2;
+}
+
+.blog-card {
+  flex-basis: 31%;
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 22px 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 40px var(--accent-primary),
+    0 0 0 1px var(--accent-hover);
+}
+
+.blog-card h3 {
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.blog-card p {
+  color: var(--text-muted);
+}
+
+/* Blog "read more" link */
+.blog-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.blog-link:hover {
+  color: var(--accent-primary);
+  text-decoration: underline;
+}
+
+/* =========================================================
+   RESOURCES SECTION (RESOURCES PAGE)
+   ======================================================= */
+
+/* Banner for resources */
+.banner6 {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.banner6 img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(70%);
+}
+
+.banner6::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 4;
+}
+
+.banner6 .banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  text-align: center;
+  color: #ffffff;
+}
+
+.banner6 .banner-text h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.banner6 .banner-text p {
+  font-size: 18px;
+  color: #e3e3e3;
+}
+
+/* Resource hub cards section */
+.resource-hub {
+  width: 100%;
+  padding: 70px 20px;
+  background: linear-gradient(rgba(14, 14, 14, 0.95), rgba(0, 0, 0, 1));
+  color: var(--text-main);
+  text-align: center;
+}
+
+html.light-theme .resource-hub {
+  background: linear-gradient(
+    rgba(232, 232, 232, 0.9),
+    rgba(242, 242, 242, 1)
+  );
+}
+
+.hub-text h1 {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: underline 5px var(--accent-primary);
+  margin-bottom: 10px;
+}
+
+.hub-text p {
+  font-size: 15px;
+  color: var(--text-soft);
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+/* Resource filters (search, select) */
+.search-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.search-filter input,
+.search-filter select {
+  padding: 12px 16px;
+  width: 260px;
+  background: #1b1b1b;
+  border: 1px solid var(--border-soft);
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+html.light-theme .search-filter input,
+html.light-theme .search-filter select {
+  background: #ffffff;
+  color: #000000;
+}
+
+.search-filter input::placeholder {
+  color: #8d8d8d;
+}
+
+/* Resource cards grid */
+.resource-row {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.resource-card {
+  background: var(--bg-card);
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  transition: 0.3s;
+}
+
+.resource-card:hover {
+  box-shadow: 0 0 18px var(--accent-hover-soft);
+  transform: translateY(-3px);
+}
+
+.resource-card h3 {
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.resource-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Resource external link button */
+.resource-link {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 18px;
+  background: transparent;
+  border: 2px solid var(--accent-primary);
+  border-radius: 8px;
+  color: var(--accent-primary) !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: 0.3s;
+}
+
+.resource-link:hover {
+  border-color: var(--accent-hover);
+  background: var(--accent-primary);
+  color: #000000 !important;
+}
+
+/* Suggest a resource (form section) */
+.suggest-resource {
+  width: 100%;
+  padding: 80px 20px;
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(15, 15, 15, 0.9));
+  color: var(--text-main);
+  text-align: center;
+}
+
+html.light-theme .suggest-resource {
+  background: linear-gradient(
+    rgba(232, 232, 232, 1),
+    rgba(242, 242, 232, 0.95)
+  );
+}
+
+#resourceForm {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: #1b1b1b;
+  border: 1px solid var(--border-soft);
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+html.light-theme .form-group input,
+html.light-theme .form-group select,
+html.light-theme .form-group textarea {
+  background: #ffffff;
+  color: #000000;
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: none;
+}
+
+.submit-btn {
+  background: transparent;
+  border: 2px solid var(--accent-primary);
+  color: var(--accent-primary);
+  padding: 12px 28px;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.submit-btn:hover {
+  border-color: var(--accent-hover);
+  background: var(--accent-primary);
+  color: #000000;
+}
+
+.form-message {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #8df58d;
+}
+
+/* =========================================================
+   HIGHLIGHTS / TOUR1 (HIGHLIGHTS PAGE)
+   ======================================================= */
+
+/* Banner on highlights page */
+.banner5 {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.banner5 img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(70%);
+}
+
+.banner5::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 4;
+}
+
+.banner5 .banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  text-align: center;
+  color: #ffffff;
+}
+
+.banner5 .banner-text h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.banner5 .banner-text p {
+  font-size: 18px;
+  color: #e3e3e3;
+}
+
+/* Highlights section container */
+.tour1 {
+  width: 100vw;
+  margin: 0;
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+  background-color: var(--bg-section);
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.7)
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  border-radius: 0;
+  overflow: hidden;
+  color: var(--text-main);
+}
+
+html.light-theme .tour1 {
+  background-color: var(--bg-section);
+  background-image: linear-gradient(
+    rgba(232, 232, 232, 0.95),
+    rgba(242, 242, 242, 1)
+  );
+}
+
+/* Individual highlight cards */
+.event-col2 {
+  width: 500px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-col2 img {
+  width: 500px;
+  height: 300px;
+  display: block;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Overlay on hover for highlight cards */
+.event-col2:hover .layer {
+  background: rgba(244, 67, 54, 0.7);
+}
+
+/* Copy text block on highlight cards */
+.event-col2 p {
+  padding: 12px 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 30px;
+  background-color: var(--bg-card);
+  margin: 0;
+  min-height: 170px;
+}
+
+/* Home page card min-height override if used */
+.home-page-img p {
+  min-height: 85px !important;
+}
+
+/* In light mode, make highlight cards use a light background */
+html.light-theme .event-col2 p {
+  background-color: #ffffff;
+  color: #06102a;
+}
+
+html.light-theme .event-col2 {
+  background-color: #ffffff;
+}
+
+/* Current hover overlay text color for highlight cards */
+.layer h3 {
+  width: 100%;
+  font-weight: 500;
+  color: #ffffff; /* dark mode / default */
+  font-size: 26px;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.event-col2:hover .layer h3 {
+  bottom: 49%;
+  opacity: 1;
+  border-radius: 20px;
+}
+
+/* Make hover text dark in light mode on highlight cards */
+html.light-theme .event-col2:hover .layer h3 {
+  color: var(--accent-hover);
+}
+
+/* =========================================================
+   MOBILE (≤700px)
+   ---------------------------------------------------------
+   Includes the narrower slide-in nav (180px wide).
+   ======================================================= */
+
+@media (max-width: 700px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  /* Fixed nav adjustments on mobile */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 25px;
+    background-color: var(--bg-header);
+    height: 65px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+  }
+
+  nav img.logo {
+    width: 60px;
+    height: 30px;
+  }
+
+  .menu-icon-unicode {
+    display: block;
+    font-size: 24px;
+    color: var(--text-main);
+    cursor: pointer;
+  }
+
+  /* Slide‑in navigation panel (narrower on mobile) */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -180px;
+    width: 180px;
+    height: 100vh;
+    background: #222;
+    text-align: right;
+    transition: 0.4s ease;
+    padding-top: 60px;
+    z-index: 9999;
+  }
+
+  .nav-links ul {
+    padding: 0;
+  }
+
+  .nav-links ul li {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 4px;
+  }
+
+  .nav-links ul li a {
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    color: #ffffff;
+  }
+
+  .cross-icon {
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 40px;
+  }
+
+  .header {
+    padding-top: 65px;
+  }
+
+  .text-box h1 {
+    font-size: 28px;
+  }
+
+  .text-box p {
+    font-size: 14px;
+    margin: 12px 0 20px;
+  }
+
+  .hero-btn {
+    padding: 10px 22px;
+    font-size: 14px;
+  }
+
+  .newsinfo {
+    width: 100%;
+    padding: 60px 20px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+  }
+
+  .newsinfo .news {
+    font-size: 26px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .news-col {
+    width: 90%;
+    max-width: 480px;
+    text-align: left;
+    border-radius: 12px;
+  }
+
+  .news-col h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  .news-col p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .articles {
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 250px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-align: center;
+  }
+
+  .tour {
+    padding: 60px 16px;
+    width: 100%;
+    background-attachment: scroll;
+  }
+
+  .event-col {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .btn1 {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 10px;
+  }
+
+  .blog-row {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .blog-card {
+    flex-basis: 100%;
+  }
+
+  .resource-row {
+    grid-template-columns: 1fr;
+  }
+
+  #resourceForm {
+    width: 95%;
+  }
+
+  .search-filter input,
+  .search-filter select {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  /* Footer stacked layout */
+  footer {
+    width: 100%;
+    padding: 40px 20px;
+    height: auto;
+    text-align: center;
+  }
+
+  footer img {
+    width: 180px;
+    height: auto;
+    margin: 0 auto 20px auto;
+    position: static;
+  }
+
+  footer h4 {
+    top: 0 !important;
+    left: 0 !important;
+    margin: 30px 0 10px;
+    text-align: center;
+  }
+
+  .text-container,
+  .text-container2,
+  .text-container3 {
+    position: static !important;
+    width: 100%;
+    margin: 10px auto;
+    text-align: center;
+    padding: 0;
+  }
+
+  .text-container p,
+  .text-container2 p {
+    padding: 4px 0;
+    color: var(--text-muted);
+  }
+
+  .text-container3 .fa {
+    display: inline-block;
+    margin: 10px;
+    left: 0 !important;
+    top: 0 !important;
+    font-size: 24px;
+    color: #858585;
+  }
+
+  .departments,
+  .follow {
+    position: static !important;
+  }
+
+  .banner-text h1 {
+    font-size: 35px;
+  }
+}
+
+/* LIGHT THEME NAVBAR OVERRIDES ON MOBILE */
+@media (max-width: 700px) {
+
+  html.light-theme .nav-links {
+    background: #ffffff;
+  }
+
+  html.light-theme .nav-links ul li a {
+    color: #000000;
+  }
+
+  html.light-theme .menu-icon-unicode {
+    color: #000000;
+  }
+
+  html.light-theme .cross-icon::before,
+  html.light-theme .cross-icon::after {
+    background: #000000;
+  }
+}
+
+/* Slightly larger text on bigger screens for readability */
+@media (min-width: 700px) {
+  body {
+    font-size: 15px;
+  }
+
+  .nav-links ul li a,
+  .hero-btn,
+  .btn,
+  .btn1 {
+    font-size: 15px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4{
+    font-size:12px;
+  }
+}
+
+/* =========================================================
+   TOAST POPUP (FORM SUBMITTED)
+   ======================================================= */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: -80px;
+  transform: translateX(-50%);
+  min-width: 260px;
+  max-width: 90%;
+  padding: 12px 18px;
+  background: #1e293b;
+  color: #e5fbe5;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2000;
+  transition: bottom 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.toast::before {
+  content: "✔";
+  margin-right: 8px;
+  color: #4ade80;
+  font-weight: 700;
+}
+
+.toast.show {
+  bottom: 20px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* =========================================================
+   ABOUT PAGE AUTO-MOVING BANNER (3D RING)
+   ======================================================= */
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--bg-section);
+  background-size: cover;
+  background-position: center;
+}
+
+html.light-theme .banner {
+  background-color: #ffffff;
+}
+
+/* Auto-moving 3D ring of images */
+.banner .slider-imgs {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: 10%;
+  left: calc(50% - 100px);
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 20s linear infinite;
+  z-index: 2;
+}
+
+@keyframes autoRun {
+  from {
+    transform: perspective(1200px) rotateX(-16deg) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1200px) rotateX(-16deg) rotateY(360deg);
+  }
+}
+
+.banner .slider-imgs .item {
+  position: absolute;
+  inset: 0;
+  transform:
+    rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+    translateZ(550px);
+}
+
+.banner .slider-imgs .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Banner text + model layout */
+.banner .content {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: block;
+  z-index: 1;
+}
+
+/* Large word in bottom-left */
+.banner .content h1 {
+  font-family: "ICA Rubrik";
+  font-size: 10em;
+  line-height: 1em;
+  color: #252830;
+  position: absolute;
+  left: 150px;
+  bottom: 40px;
+}
+
+/* Outline pass on the large word */
+.banner .content h1::after {
+  position: absolute;
+  inset: 0;
+  content: attr(data-content);
+  z-index: 2;
+  -webkit-text-stroke: 2px #d2d2d2;
+  color: transparent;
+}
+
+/* Author block */
+.banner .content .author {
+  font-family: Poppins, sans-serif;
+  text-align: left;
+  max-width: 220px;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  color: var(--text-main);
+}
+
+.banner .content h2 {
+  font-size: 3em;
+}
+
+/* Mayor image overlay */
+.banner .content .model {
+  background-image: url(assets/frisco-mayor.png);
+  width: 100%;
+  height: 75vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-size: auto 130%;
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: 1;
+}
+
+/* Banner responsive tweaks */
+@media (max-width: 700px) {
+  .banner .content {
+    padding: 20px;
+  }
+
+  .banner .content h1 {
+    font-size: 3.2em;
+    left: 20px;
+    bottom: 20px;
+  }
+
+  .banner .content .author {
+    top: 20px;
+    left: 20px;
+    max-width: 180px;
+  }
+}
+
+/* =========================================================
+   AFTER-BANNER IMAGE WITH HOVER BORDER (ABOUT PAGE)
+   ======================================================= */
+
+.after-bannner {
+  width: 100%;
+  height: 400px;
+  padding: 20px;
+  border-radius: 30px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* No border by default */
+.after-bannner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  border: 3px solid transparent;
+  box-shadow: 0 0 0 rgba(244, 67, 54, 0);
+  pointer-events: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Red glowing border on hover (uses theme vars) */
+.after-bannner:hover::before {
+  border-color: var(--accent-primary);
+  box-shadow:
+    0 0 15px var(--accent-hover-soft),
+    0 0 30px var(--accent-primary-subtle);
+}
+
+/* Actual image */
+.img-after {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  display: block;
+  object-fit: cover;
+}
+
+/* =========================================================
+   HORIZONTAL LOGO / PHOTO SLIDERS (BLOG PAGE)
+   ======================================================= */
+
+/* Container around the scrolling logos/photos */
+.slider-blog-logos {
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background-color: rgb(167, 167, 167);
+
+  /* default item size; can be overridden inline */
+  --width: 100px;
+  --height: 60px;
+}
+
+/* Track containing two copies of the items for infinite scroll */
+.slider-blog-logos .list-logos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  animation: autoRun2 25s linear infinite;
+}
+
+/* Pause the animation when hovering over the strip */
+.slider-blog-logos:hover .list-logos {
+  animation-play-state: paused;
+}
+
+/* Small logo items */
+.slider-blog-logos .item-logos {
+  flex-shrink: 0;
+  width: var(--width);
+  height: var(--height);
+}
+
+.slider-blog-logos .item-logos img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+/* Larger photo items (Frisco images) */
+.slider-blog-logos .item-logos2 {
+  flex-shrink: 0;
+  width: var(--width);
+  height: var(--height);
+}
+
+.slider-blog-logos .item-logos2 img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+/* Optional grayscale hover effect */
+.slider-blog-logos:hover .item-logos2 {
+  filter: grayscale(1);
+}
+
+.slider-blog-logos .item-logos2:hover {
+  filter: grayscale(0);
+}
+
+.slider-blog-logos .list-logos .item-logos2 {
+  transition: filter 0.5s;
+}
+
+/* Infinite, seamless movement: track is duplicated, so move by 50% */
+@keyframes autoRun2 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================
+   POP / 3D IMAGE ANIMATION (HOME/ABOUT)
+   ======================================================= */
+
+.pop-container {
+  perspective: 800px;
+}
+
+.pop-image {
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.pop-image:hover {
+  transform: translateZ(60px);
+}
+
+.animation-container {
+  padding: 20px;
+  margin-top: -20px;
+}
+
+/* =========================================================
+   ACCESSIBILITY: FOCUS + REDUCED MOTION
+   ======================================================= */
+
+/* Clear, visible focus outlines for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent-hover);
+  outline-offset: 4px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   BLOG DATA TABLE (BLOGS PAGE)
+   ======================================================= */
+
+.blog-data {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.blog-data h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-decoration: underline 5px var(--accent-primary);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 25px;
+}
+
+table {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  border-collapse: collapse;
+  background: var(--card-bg, #111);
+  color: var(--text-main, #eaeaea);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  background: #f44336;
+  color: white;
+}
+
+th,
+td {
+  padding: 14px 18px;
+  text-align: left;
+}
+
+th {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+tr:hover {
+  background: rgba(244, 67, 54, 0.15);
+}
+
+html.light-theme td {
+  color: black;
+}
+
+html.light-theme table {
+  background-color: var(--bg-header);
+}
+
+/* Filter select inside thead */
+.blog-data th select {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 9px;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-card);
+  color: rgb(194, 194, 194);
+}
+
+html.light-theme .blog-data th select {
+  color: rgb(105, 105, 105);
+}
+
+/* Gradient header background */
+.blog-data thead {
+  background: linear-gradient(90deg, #8b0000, #f44336);
+  color: #ffffff;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+/* Strong box shadow for table */
+.blog-data table {
+  box-shadow:
+    0 16px 40px rgba(224, 224, 224, 0.1),
+    0 0 0 1px var(--accent-hover);
+}
+
+.blog-data thead tr::after {
+  background: var(--accent-primary-subtle);
+}
+
+.blog-data tr:hover {
+  background: rgba(224, 224, 224, 0.25);
+}
+
+/* =========================================================
+   CONSOLIDATED ACCENT / OVERLAY OVERRIDES
+   ======================================================= */
+
+.news,
+.tour .section-title h1,
+.hub-text h1,
+.blog-data h2 {
+  text-decoration: underline 5px var(--accent-primary);
+}
+
+.nav-links ul li a::after {
+  background: var(--accent-primary);
+}
+
+/* Unified hover for main CTAs */
+.hero-btn:hover,
+.btn:hover,
+.resource-link:hover,
+.submit-btn:hover {
+  border-color: var(--accent-hover);
+  background: var(--accent-primary);
+  color: #000000;
+}
+
+/* Overlay elements share same overlay color */
+.header::before,
+.slider-wrapper::before,
+.banner::before {
+  background: var(--bg-overlay);
+}
+
+/* Ensure hero/banner text stays readable on overlays */
+.banner-text h1,
+.banner-text p,
+.slider-text h1,
+.slider-text p,
+.text-box h1,
+.text-box p {
+  color: #ffffff;
+}
+
+/* =========================================================
+   GLOBAL LAYOUT CONTAINER
+   ======================================================= */
+
+#page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#content {
+  flex: 1;
+}
+
+/* Card extra-info hover */
+.card .extra-info {
+  display: none;
+}
+
+.card:hover .extra-info {
+  display: block;
+}
+
+/* Footer layout helper */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Keyboard focus indicator – WCAG 2.4.7 */
+:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+
+/* Ensure links/buttons keep focus outline */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+
+/* Light-theme resource card hover tweak */
+html.light-theme .resource-card:hover {
+  box-shadow: 0 0 20px var(--accent-primary);
+}
+
+/* =========================================================
+   CITATIONS PAGE (citations.html)
+   ======================================================= */
+
+.citations-container {
+  max-width: 1100px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.citation-section {
+  margin-bottom: 3rem;
+}
+
+.citation-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 5px solid var(--accent-color, #d62828);
+}
+
+/* Base citation card elevations */
+.citation-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 20px 16px;
+  border: 1px solid var(--border-soft);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.citation-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.citation-card li {
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-color, #eaeaea);
+}
+
+.citation-card span {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--muted-text, #bdbdbd);
+  word-break: break-word;
+}
+
+.citation-disclaimer {
+  margin-top: 4rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted-text, #aaa);
+}
+
+/* Mobile tweaks for citations page */
+@media (max-width: 700px) {
+  .citations-container {
+    margin: 2.5rem auto;
+  }
+
+  .citation-section h2 {
+    font-size: 1.35rem;
+  }
+
+  .citation-card {
+    padding: 1.25rem;
+  }
+
+  .citation-card li {
+    font-size: 0.95rem;
+  }
+}
+
+/* Light theme card & text for citations */
+.light-theme .citation-card {
+  background: #f7f7f7;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.light-theme .citation-card li {
+  color: #222;
+}
+
+.light-theme .citation-card span,
+.light-theme .citation-disclaimer {
+  color: #555;
+}
+
+/* Hover elevation on citation cards */
+.citation-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 14px 30px rgba(255, 255, 255, 0.35),
+    0 0 0 1px var(--accent-hover);
+  border-color: var(--accent-primary);
+}
+
+html.light-theme .citation-card:hover {
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.35),
+    0 0 0 1px var(--accent-hover);
+  border-color: var(--accent-primary);
+}
+
+/* =========================================================
+   PAGE HEADER (UNDER NAV BAR)
+   Used for Citations & similar static pages
+   ======================================================= */
+
+.page-header {
+  max-width: 1200px;
+  margin: 110px auto 40px auto; /* accounts for fixed nav */
+  padding: 0 20px;
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.page-header p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+@media (max-width: 700px) {
+  .page-header {
+    margin: 100px auto 28px auto;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .page-header p {
+    font-size: 1rem;
+  }
+}
+
+/* Secondary accent usage – subtle civic balance */
+h2,
+.section-title,
+.citation-card h3,
+.blog-card h3,
+.news-col h3 {
+  color: var(--accent-navy);
+}
+
+/* =========================================================
+   CITATION LINK STYLING
+   ======================================================= */
+
+/* Dark theme citation links */
+.citation-card a,
+.citation-card a:visited {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.citation-card a:hover,
+.citation-card a:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: #ffffff;
+  text-underline-offset: 4px;
+}
+
+/* Light theme citation links (override) */
+html.light-theme .citation-card a,
+html.light-theme .citation-card a:visited {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+html.light-theme .citation-card a:hover,
+html.light-theme .citation-card a:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--accent-primary);
+  text-underline-offset: 4px;
+}

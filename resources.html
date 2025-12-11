@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frisco Community Resources</title>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- =========================================================
+       NAVIGATION BAR (SUB-HEADER)
+       ======================================================= -->
+  <section class="sub-header">
+    <nav>
+      <!-- Theme toggle button (light/dark mode) -->
+      <button id="theme-toggle" aria-label="Toggle light/dark mode"></button>
+
+      <!-- Logo linking to home page -->
+      <a href="index.html">
+        <img src="assets/logo.png" class="logo" alt="Frisco-City-Logo">
+      </a>
+
+      <!-- Navigation links (desktop and mobile) -->
+      <div class="nav-links" id="navLinks">
+        <div class="cross-icon" onclick="hideMenu()"></div>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="highlights.html">Highlights</a></li>
+          <li><a href="">Resources</a></li>
+          <li><a href="citations.html">References</a></li>
+        </ul>
+      </div>
+
+      <!-- Hamburger menu icon (mobile) -->
+      <div class="menu-icon-unicode" onclick="showMenu()">☰</div>
+    </nav>
+  </section>
+
+  <!-- =========================================================
+       TOP BANNER SECTION
+       ======================================================= -->
+  <section class="blog-content">
+    <div class="banner6">
+      <img src="assets/banner_6.jpg" alt="Frisco-Resources-Banner">
+    </div>
+    <div class="banner-text">
+      <h1>Frisco Community Resources</h1>
+      <p>Connecting you with local services, programs, and volunteer opportunities in our city.</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       COMMUNITY RESOURCE HUB
+       ======================================================= -->
+  <section class="resource-hub">
+    <!-- Section header -->
+    <div class="hub-text">
+      <h1>Community Resource Hub</h1>
+      <p>Search and filter trusted services, programs, and organizations supporting residents of Frisco, TX.</p>
+    </div>
+
+    <!-- Search and category filter -->
+    <div class="search-filter">
+      <input type="text" id="searchInput" placeholder="Search resources...">
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="city">City Services</option>
+        <option value="health">Health & Wellness</option>
+        <option value="safety">Public Safety</option>
+        <option value="education">Education</option>
+        <option value="community">Community Support</option>
+        <option value="recreation">Recreation</option>
+      </select>
+    </div>
+
+    <!-- Resource cards grid -->
+    <div class="resource-row" id="resourceList">
+      <!-- Resource card 1 -->
+      <div class="resource-card" data-category="education">
+        <h3>Frisco Public Library</h3>
+        <p>Books, digital media, community learning programs, and research resources for all ages.</p>
+        <a href="https://friscolibrary.bibliocommons.com/user/login?destination=https%3A%2F%2Ffriscolibrary.com" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 2 -->
+      <div class="resource-card" data-category="community">
+        <h3>Frisco Family Services</h3>
+        <p>Food pantry, emergency assistance, and family support programs for Frisco residents.</p>
+        <a href="https://friscofamilyservices.org" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 3 -->
+      <div class="resource-card" data-category="city">
+        <h3>City of Frisco</h3>
+        <p>Municipal services, permits, utilities, and community information.</p>
+        <a href="https://friscotexas.gov" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 4 -->
+      <div class="resource-card" data-category="safety">
+        <h3>Frisco Police Department</h3>
+        <p>Public safety, emergency services, crime prevention, and community outreach programs.</p>
+        <a href="https://www.friscotexas.gov/Police" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 5 -->
+      <div class="resource-card" data-category="safety">
+        <h3>Frisco Fire Department</h3>
+        <p>Fire safety, emergency medical response, and community education initiatives.</p>
+        <a href="https://www.friscotexas.gov/Fire" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 6 -->
+      <div class="resource-card" data-category="community">
+        <h3>Frisco ISD Community Resources</h3>
+        <p>Support services and helpful programs for parents, families, and students.</p>
+        <a href="https://www.friscoisd.org/community/resources/home" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 7 -->
+      <div class="resource-card" data-category="health">
+        <h3>Baylor Scott & White Medical Center</h3>
+        <p>Full-service hospital offering emergency care, surgery, and specialty clinics.</p>
+        <a href="https://www.bswhealth.com" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 8 -->
+      <div class="resource-card" data-category="health">
+        <h3>Children’s Health Plano</h3>
+        <p>Pediatric healthcare, urgent care, and specialty child medical services.</p>
+        <a href="https://www.childrens.com" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 9 -->
+      <div class="resource-card" data-category="recreation">
+        <h3>Play Frisco</h3>
+        <p>Recreation programs, parks, events, and community activities for all ages.</p>
+        <a href="https://www.playfrisco.org" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 10 -->
+      <div class="resource-card" data-category="recreation">
+        <h3>Frisco Athletic Center</h3>
+        <p>Fitness center, aquatics, sports programs, and community recreation activities.</p>
+        <a href="https://www.friscotexas.gov/Facilities" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 11 -->
+      <div class="resource-card" data-category="education">
+        <h3>Collin College – Frisco Campus</h3>
+        <p>Higher education programs, workforce training, and continuing education courses.</p>
+        <a href="https://www.collin.edu" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 12 -->
+      <div class="resource-card" data-category="community">
+        <h3>Frisco Senior Center</h3>
+        <p>Programs, activities, and services for seniors aged 50+ in Frisco.</p>
+        <a href="https://www.friscotexas.gov/SeniorCenter" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 13 -->
+      <div class="resource-card" data-category="community">
+        <h3>LifeTalk Resource Center</h3>
+        <p>Support services, counselling, and resources for families and individuals.</p>
+        <a href="https://lifetalkprc.org/" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 14 -->
+      <div class="resource-card" data-category="safety">
+        <h3>Animal Services – City of Frisco</h3>
+        <p>Pet adoption, animal control services, and lost-and-found assistance.</p>
+        <a href="https://www.friscotexas.gov/AnimalServices" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 15 -->
+      <div class="resource-card" data-category="education">
+        <h3>UNT Frisco Campus</h3>
+        <p>Undergraduate and graduate degree programs supporting Frisco’s growing workforce.</p>
+        <a href="https://frisco.unt.edu" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 16 -->
+      <div class="resource-card" data-category="community">
+        <h3>Hope Fellowship Frisco</h3>
+        <p>Community outreach, family support programs, and volunteer opportunities.</p>
+        <a href="https://hopefellowship.net" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 17 -->
+      <div class="resource-card" data-category="education">
+        <h3>Frisco Arts Foundation</h3>
+        <p>Local arts programs, cultural events, and creative community initiatives.</p>
+        <a href="https://friscoarts.org" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 18 -->
+      <div class="resource-card" data-category="recreation">
+        <h3>Visit Frisco</h3>
+        <p>Tourism information, events, attractions, and travel planning resources.</p>
+        <a href="https://www.visitfrisco.com" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 19 -->
+      <div class="resource-card" data-category="community">
+        <h3>Frisco Cares</h3>
+        <p>Local nonprofit providing community support, outreach events, and care initiatives.</p>
+        <a href="https://www.facebook.com/groups/2281850458704509/" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+
+      <!-- Resource card 20 -->
+      <div class="resource-card" data-category="health">
+        <h3>Medical City Frisco</h3>
+        <p>Hospital offering surgical, emergency, orthopedic, and advanced healthcare services.</p>
+        <a href="https://medicalcityfrisco.com" target="_blank" class="resource-link">Visit Website →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SUGGEST A NEW RESOURCE FORM
+       ======================================================= -->
+  <section class="suggest-resource">
+    <!-- Section header -->
+    <div class="hub-text">
+      <h1>Suggest a New Resource</h1>
+      <p>Know a valuable Frisco-area resource? Share it with us.</p>
+    </div>
+
+    <!-- Form for submitting new resources -->
+    <form id="resourceForm" action="https://formsubmit.co/friscotexas25@gmail.com" method="POST">
+      <!-- Redirect after submission -->
+      <input type="hidden" name="_next" value="https://v4vedantb.github.io/tsa_community.story.frisco.texas/resources.html">
+      <!-- Disable CAPTCHA -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Name input -->
+      <div class="form-group">
+        <label for="resourceName">Resource Name *</label>
+        <input type="text" id="resourceName" name="resourceName" required placeholder="Name of organization or service">
+      </div>
+
+      <!-- Email input -->
+      <div class="form-group">
+        <label for="resourceEmail">Your Email *</label>
+        <input type="email" id="resourceEmail" name="resourceEmail" required placeholder="yourname@example.com">
+      </div>
+
+      <!-- Category select -->
+      <div class="form-group">
+        <label for="resourceCategory">Category *</label>
+        <select id="resourceCategory" name="resourceCategory" required>
+          <option value="">Select a category</option>
+          <option value="city">City Services</option>
+          <option value="health">Health & Wellness</option>
+          <option value="safety">Public Safety</option>
+          <option value="education">Education</option>
+          <option value="community">Community Support</option>
+          <option value="recreation">Recreation</option>
+        </select>
+      </div>
+
+      <!-- Description textarea -->
+      <div class="form-group">
+        <label for="resourceDescription">Description *</label>
+        <textarea id="resourceDescription" name="resourceDescription" required placeholder="Brief description of the resource"></textarea>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="submit-btn">Submit Resource</button>
+      <!-- Form message area -->
+      <p id="formMessage" class="form-message"></p>
+    </form>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+       ======================================================= -->
+  <section class="footer">
+    <footer>
+      <!-- Footer logo -->
+      <div class="logo">
+        <img src="assets/logo.png" alt="Frisco Logo">
+      </div>
+      <!-- Contact info -->
+      <h4>Contact Us</h4>
+      <div class="text-container">
+        <p>George A. Purefoy Municipal Center</p>
+        <p>6101 Frisco Square Boulevard</p>
+        <p>Frisco, Texas 75034</p>
+        <p>Phone: 972-292-5000</p>
+      </div>
+<h4 class="departments">Departments</h4>
+<div class="text-container2 footer-dept-links">
+  <p><a href="https://www.friscotexas.gov/506/City-Manager" target="_blank">City Manager’s Office</a></p>
+  <p><a href="https://www.friscoedc.com" target="_blank">Economic Development</a></p>
+  <p><a href="https://www.friscotexas.gov/154/Fire" target="_blank">Frisco Fire</a></p>
+  <p><a href="https://www.friscotexas.gov/100/Police" target="_blank">Frisco Police</a></p>
+  <p><a href="https://www.friscotexas.gov/167/Municipal-Court" target="_blank">Municipal Court</a></p>
+  <p><a href="https://www.playfrisco.org" target="_blank">Play Frisco</a></p>
+  <p><a href="https://www.visitfrisco.com" target="_blank">Visit Frisco</a></p>
+</div>
+
+      <!-- Social media links -->
+      <div class="footer-column follow-column">
+        <h4 class="follow">Follow Us</h4>
+        <div class="text-container3">
+          <a href="https://www.facebook.com/CityOfFriscoTX" class="fa fa-facebook"></a>
+          <a href="https://www.instagram.com/cityoffriscotx/" class="fa fa-instagram"></a>
+          <a href="https://www.youtube.com/user/cityoffriscotx" class="fa fa-youtube"></a>
+          <a href="https://www.linkedin.com/company/city-of-frisco/" class="fa fa-linkedin"></a>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+  <!-- Toast popup (bottom) -->
+  <div id="toast" class="toast">
+    <span class="toast-text">Your form has been submitted!</span>
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ======================================================= -->
+  <script>
+    // Navigation: show mobile menu
+    function showMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.style.right = '0';
+    }
+
+    // Navigation: hide mobile menu
+    function hideMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.style.right = '-200px';
+    }
+
+    // Resource search and filter logic
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const resourceCards = document.querySelectorAll('.resource-card');
+
+    // Highlight search matches
+    function highlightText(text, search) {
+      if (!search) return text;
+      const regex = new RegExp(`(${search})`, 'gi');
+      return text.replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    // Filter resources based on search and category
+    function filterResources() {
+      const searchText = searchInput.value.toLowerCase();
+      const selectedCategory = categoryFilter.value;
+
+      resourceCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        const titleEl = card.querySelector('h3');
+        const descEl = card.querySelector('p');
+
+        const titleText = titleEl.getAttribute('data-original') || titleEl.textContent;
+        const descText = descEl.getAttribute('data-original') || descEl.textContent;
+
+        const matchesSearch = titleText.toLowerCase().includes(searchText) || descText.toLowerCase().includes(searchText);
+        const matchesCategory = selectedCategory === 'all' || cardCategory === selectedCategory;
+
+        if (matchesSearch && matchesCategory) {
+          card.style.display = 'block';
+          titleEl.innerHTML = highlightText(titleText, searchText);
+          descEl.innerHTML = highlightText(descText, searchText);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Store original text for highlighting
+    resourceCards.forEach(card => {
+      const titleEl = card.querySelector('h3');
+      const descEl = card.querySelector('p');
+      titleEl.setAttribute('data-original', titleEl.textContent);
+      descEl.setAttribute('data-original', descEl.textContent);
+    });
+
+    // Attach event listeners
+    searchInput.addEventListener('input', filterResources);
+    categoryFilter.addEventListener('change', filterResources);
+
+    // Show success message after form submission
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      document.getElementById('formMessage').innerHTML = 'Thank you! Your resource suggestion has been submitted.';
+    }
+
+    // Form validation and toast popup
+    const form = document.getElementById('resourceForm');
+    const emailInput = document.getElementById('resourceEmail');
+    const formMessage = document.getElementById('formMessage');
+    const toast = document.getElementById('toast');
+
+    // Email validation regex
+    function isValidEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    // Form submission logic
+    form.addEventListener('submit', function (event) {
+      const emailValue = emailInput.value.trim();
+
+      if (!isValidEmail(emailValue)) {
+        event.preventDefault();
+        formMessage.textContent = '❌ Please enter a valid email address.';
+        formMessage.style.color = '#ff6767';
+        return;
+      }
+
+      // Confirmation message
+      formMessage.textContent = '✔ Your form is submitting!';
+      formMessage.style.color = '#8df58d';
+
+      // Show toast popup
+      if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+    });
+
+    const toggleBtn = document.getElementById('theme-toggle');
+const root = document.documentElement;
+
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme === 'light') {
+  root.classList.add('light-theme');
+  toggleBtn.textContent = 'Toggle Dark Mode On';
+} else {
+  // force dark as default and normalize stored value
+  localStorage.setItem('theme', 'dark');
+  root.classList.remove('light-theme');
+  toggleBtn.textContent = 'Toggle Light Mode On';
+}
+
+toggleBtn.addEventListener('click', () => {
+  const isLight = root.classList.toggle('light-theme');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  toggleBtn.textContent = isLight ? 'Toggle Dark Mode On' : 'Toggle Light Mode On';
+});
+
+  </script>
+
+</body>
+</html>
